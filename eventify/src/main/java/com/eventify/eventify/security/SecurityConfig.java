@@ -35,14 +35,14 @@ public class SecurityConfig {
                         .requestMatchers("/api/auth/**").permitAll()
                         .requestMatchers("/api/health").permitAll()
 
-                        // accès public aux images
                         .requestMatchers("/uploads/**").permitAll()
 
-
-                        // lecture publique
                         .requestMatchers(HttpMethod.GET, "/api/events/**").permitAll()
 
-                        // admin
+                        // 🔥 AJOUT DU PDF (RIEN D'AUTRE)
+                        .requestMatchers("/api/events/*/register").hasRole("USER")
+                        .requestMatchers("/api/me/**").authenticated()
+
                         .requestMatchers(HttpMethod.POST, "/api/events").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.POST, "/api/events/**").hasRole("ADMIN")
 

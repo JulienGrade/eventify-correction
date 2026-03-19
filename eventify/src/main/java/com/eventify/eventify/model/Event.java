@@ -12,11 +12,16 @@ public class Event {
     private Long id;
 
     private String title;
+
     @Column(columnDefinition = "TEXT")
     private String description;
+
     private LocalDateTime eventDate;
 
     private String imagePath;
+
+    // 🔥 BONUS
+    private Integer maxParticipants;
 
     // Constructeur vide obligatoire pour Hibernate
     public Event() {
@@ -45,6 +50,14 @@ public class Event {
         return eventDate;
     }
 
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public Integer getMaxParticipants() {
+        return maxParticipants;
+    }
+
     public void setTitle(String title) {
         this.title = title;
     }
@@ -57,11 +70,11 @@ public class Event {
         this.eventDate = eventDate;
     }
 
-    public String getImagePath() {
-        return imagePath;
-    }
-
     public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
+    }
+
+    public void setMaxParticipants(Integer maxParticipants) {
+        this.maxParticipants = maxParticipants;
     }
 }
