@@ -2,6 +2,7 @@ package com.eventify.eventify.controller;
 
 import com.eventify.eventify.dto.LoginRequest;
 import com.eventify.eventify.dto.LoginResponse;
+import com.eventify.eventify.dto.RegisterRequest;
 import com.eventify.eventify.service.AuthService;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,5 +23,9 @@ public class AuthController {
 
         return new LoginResponse(token);
     }
-}
 
+    @PostMapping("/register")
+    public void register(@RequestBody RegisterRequest request) {
+        authService.register(request);
+    }
+}

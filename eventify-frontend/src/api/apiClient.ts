@@ -52,3 +52,4 @@ export async function apiFetch<T>(
 
     return await response.text() as T;
 }
+

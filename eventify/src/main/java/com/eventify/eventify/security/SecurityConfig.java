@@ -39,7 +39,6 @@ public class SecurityConfig {
 
                         .requestMatchers(HttpMethod.GET, "/api/events/**").permitAll()
 
-                        // 🔥 AJOUT DU PDF (RIEN D'AUTRE)
                         .requestMatchers("/api/events/*/register").hasRole("USER")
                         .requestMatchers("/api/me/**").authenticated()
 

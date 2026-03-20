@@ -30,6 +30,13 @@ export default function Navbar() {
                         Santé API
                     </Link>
 
+                    {/* 🔥 AJOUT ICI */}
+                    {token && (
+                        <Link to="/me" className="hover:text-indigo-600">
+                            Mes inscriptions
+                        </Link>
+                    )}
+
                     {isAdmin && (
                         <Link to="/admin" className="hover:text-indigo-600">
                             Administration
@@ -44,7 +51,14 @@ export default function Navbar() {
                             Connexion
                         </Link>
                     )}
-
+                    {!token && (
+                        <Link
+                            to="/register"
+                            className="text-sm hover:text-indigo-600"
+                        >
+                            Inscription
+                        </Link>
+                    )}
                     {token && (
                         <button
                             onClick={logout}

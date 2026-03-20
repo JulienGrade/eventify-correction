@@ -1,6 +1,7 @@
 package com.eventify.eventify.service;
 
 import com.eventify.eventify.dto.LoginRequest;
+import com.eventify.eventify.dto.RegisterRequest;
 import com.eventify.eventify.model.User;
 import com.eventify.eventify.repository.UserRepository;
 import com.eventify.eventify.security.JwtService;
@@ -33,6 +34,19 @@ public class AuthService {
 
         return jwtService.generateToken(user.getUsername(), user.getRole());
     }
+
+    public void register(RegisterRequest request) {
+
+        if (userRepository.findByUsername(request.getUsername()).isPresent()) {
+            throw new RuntimeException("Utilisateur déjà existant");
+        }
+
+        User user = new User(
+                request.getUsername(),
+                passwordEncoder.encode(request.getPassword()),
+                "ROLE_USER"
+        );
+
+        userRepository.save(user);
+    }
 }
-
-

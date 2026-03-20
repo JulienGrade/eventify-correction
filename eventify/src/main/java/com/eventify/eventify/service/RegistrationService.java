@@ -41,7 +41,6 @@ public class RegistrationService {
         Event event = eventRepository.findById(eventId)
                 .orElseThrow(() -> new RuntimeException("Événement introuvable"));
 
-        // 🔥 BONUS : limite participants
         long participants = registrationRepository.countByEventId(eventId);
 
         if (event.getMaxParticipants() != null &&

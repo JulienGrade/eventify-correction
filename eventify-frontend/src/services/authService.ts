@@ -7,10 +7,7 @@ export async function loginRequest(
 
     const data = await apiFetch("/api/auth/login", {
         method: "POST",
-        body: JSON.stringify({
-            username,
-            password
-        })
+        body: JSON.stringify({ username, password })
     });
 
     if (!data?.token) {
@@ -18,5 +15,15 @@ export async function loginRequest(
     }
 
     return data.token;
+}
 
+export async function registerRequest(
+    username: string,
+    password: string
+): Promise<void> {
+
+    await apiFetch("/api/auth/register", {
+        method: "POST",
+        body: JSON.stringify({ username, password })
+    });
 }

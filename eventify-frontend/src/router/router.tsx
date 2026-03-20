@@ -11,6 +11,9 @@ import CreateEventPage from "../pages/CreateEventPage";
 import UploadImagePage from "../pages/UploadImagePage";
 import EventDetailPage from "../pages/EventDetailPage";
 import EditEventPage from "../pages/EditEventPage";
+import MyRegistrationsPage from "../pages/MyRegistrationsPage";
+import RegisterPage from "../pages/RegisterPage";
+
 
 import ProtectedRoute from "../components/ProtectedRoute";
 
@@ -29,6 +32,18 @@ export const router = createBrowserRouter([
             { path: "events/:id", element: <EventDetailPage /> },
 
             { path: "login", element: <LoginPage /> },
+            {
+              path: "/register", element: <RegisterPage />
+            },
+
+            {
+              path: "/me",
+              element: (
+                <ProtectedRoute role="ROLE_USER">
+                  <MyRegistrationsPage />
+                </ProtectedRoute>
+              ),
+            },
 
             {
                 path: "admin",
